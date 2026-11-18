@@ -9,4 +9,9 @@ class TransactionAdapter:
 
     def to_transaction(self):
         """Convert an external transaction to a standard Transaction."""
-        pass
+        if not hasattr(self.external_transaction, "amount"):
+            raise TypeError("External transaction must provide an amount.")
+        return Transaction(
+            self.external_transaction.amount,
+            TransactionCategory.INCOME,
+        )

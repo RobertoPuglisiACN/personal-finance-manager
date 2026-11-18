@@ -16,6 +16,7 @@ class TestBalance(unittest.TestCase):
         balance1 = Balance.get_instance()
         balance2 = Balance.get_instance()
         self.assertIs(balance1, balance2)
+        self.assertIs(Balance(), balance1)
 
     def test_add_income(self):
         self.balance.add_income(100)
